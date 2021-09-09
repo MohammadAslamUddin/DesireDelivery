@@ -23,8 +23,15 @@ namespace DesireDelivery
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/site.css",
+                "~/Content/CustomContent/custom.css"));
+
+
+
+            bundles.Add(new Bundle("~/scripts/core").Include(
+                "~/Scripts/bootstrap.bundle.min.js",
+                "~/Scripts/bootstrap.js"));
         }
     }
 }

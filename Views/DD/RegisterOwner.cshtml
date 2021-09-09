@@ -1,0 +1,55 @@
+﻿@model DesireDelivery.Models.Owner
+@{
+    ViewBag.Title = "RegisterOwner";
+    string message = ViewBag.Message;
+}
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Register Owner</legend>
+        <table class="table table-borderless d-grid">
+            <tbody>
+            <tr>
+                <td>@Html.LabelFor(l=>l.Name)</td>
+                <td>@Html.TextBoxFor(t=>t.Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.Email)</td>
+                <td>@Html.TextBoxFor(t=>t.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.MobileNumber)</td>
+                <td>@Html.TextBoxFor(t=>t.MobileNumber)</td>
+                <td>@Html.ValidationMessageFor(v=>v.MobileNumber)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.Address)</td>
+                <td>@Html.TextBoxFor(t=>t.Address)</td>
+                <td>@Html.ValidationMessageFor(v=>v.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.DateOfBirth)</td>
+                <td>@Html.TextBoxFor(t=>t.DateOfBirth)</td>
+                <td>@Html.ValidationMessageFor(v=>v.DateOfBirth)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.Password)</td>
+                <td>@Html.TextBoxFor(t=>t.Password)</td>
+                <td>@Html.ValidationMessageFor(v=>v.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l=>l.ConfirmPassword)</td>
+                <td>@Html.TextBoxFor(t=>t.ConfirmPassword)</td>
+                <td>@Html.ValidationMessageFor(v=>v.ConfirmPassword)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" class="btn"/></td>
+            </tr>
+            </tbody>
+            <label>@message</label> 
+        </table>
+    </fieldset>
+}
