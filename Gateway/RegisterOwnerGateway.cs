@@ -1,8 +1,8 @@
 ﻿using DesireDelivery.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Net.Mime;
 using System.Web.Mvc;
 
 namespace DesireDelivery.Gateway
@@ -11,7 +11,7 @@ namespace DesireDelivery.Gateway
     {
         public bool IsEmailExist(Owner owner)
         {
-            Query = "SELECT * FROM Owner WHERE owner_email = @email || owner_mobile = @mobile";
+            Query = "SELECT * FROM Owner WHERE owner_email = @email OR owner_mobile = @mobile";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
@@ -81,24 +81,22 @@ namespace DesireDelivery.Gateway
 
             Reader = Command.ExecuteReader();
 
-            List<SelectListItem> items = new List<SelectListItem>()
-            {
-                new SelectListItem() {Value = "", Text = "Select a owner"}
-            };
+            List<SelectListItem> owners = new List<SelectListItem>();
 
             while (Reader.Read())
             {
-                SelectListItem item = new SelectListItem();
-                item.Value = Reader["owner_id"].ToString();
-                item.Text = Reader["owner_name"].ToString();
-
-                items.Add(item);
+                SelectListItem owner = new SelectListItem();
+               
+                owner.Value = Reader["owner_id"].ToString();
+                owner.Text = Reader["owner_name"].ToString();
+                
+                owners.Add(owner);
             }
 
             Reader.Close();
             Connection.Close();
 
-            return items;
+            return owners;
         }
     }
 }

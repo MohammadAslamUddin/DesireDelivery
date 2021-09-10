@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using DesireDelivery.Manager;
+﻿using DesireDelivery.Manager;
 using DesireDelivery.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace DesireDelivery.Controllers
@@ -14,6 +14,7 @@ namespace DesireDelivery.Controllers
         public DDController()
         {
             registerOwnerManager = new RegisterOwnerManager();
+            restaurantManager = new RestaurantManager();
         }
         public ActionResult Index()
         {
@@ -33,9 +34,7 @@ namespace DesireDelivery.Controllers
 
         public ActionResult RegisterRestaurant()
         {
-            List<SelectListItem> owner = new List<SelectListItem>();
-            owner = restaurantManager.GetAllOwner();
-            ViewBag.owner = owner;
+            ViewBag.Owners = restaurantManager.GetAllOwner();
             return View();
         }
         [HttpPost]

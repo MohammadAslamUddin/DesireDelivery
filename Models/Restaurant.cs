@@ -15,7 +15,7 @@ namespace DesireDelivery.Models
         [Display(Name = "Mobile Number")]
         public string Mobile { get; set; }
         [Required(ErrorMessage = "Select Restaurant Owners Name")]
-        public DateTime DateTime { get; set; }
+        public DateTime AddingDate { get; set; }
         public int OwnerId { get; set; }
     }
 }
