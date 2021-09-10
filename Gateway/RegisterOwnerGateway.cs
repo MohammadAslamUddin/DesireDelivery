@@ -1,6 +1,104 @@
-﻿namespace DesireDelivery.Gateway
+﻿using DesireDelivery.Models;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Net.Mime;
+using System.Web.Mvc;
+
+namespace DesireDelivery.Gateway
 {
     public class RegisterOwnerGateway : CommonGateway
     {
+        public bool IsEmailExist(Owner owner)
+        {
+            Query = "SELECT * FROM Owner WHERE owner_email = @email || owner_mobile = @mobile";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = owner.Email;
+
+            Command.Parameters.Add("mobile", SqlDbType.VarChar);
+            Command.Parameters["mobile"].Value = owner.MobileNumber;
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            bool hasrow = false;
+
+            if (Reader.HasRows)
+            {
+                hasrow = true;
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return hasrow;
+        }
+
+        public int Save(Owner owner)
+        {
+            Query = "INSERT INTO Owner VALUES(@name, @email, @mobile, @address, @dob, @password);";
+            Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+
+            Command.Parameters.Add("name", SqlDbType.VarChar);
+            Command.Parameters["name"].Value = owner.Name;
+
+            Command.Parameters.Add("email", SqlDbType.VarChar);
+            Command.Parameters["email"].Value = owner.Email;
+
+            Command.Parameters.Add("mobile", SqlDbType.VarChar);
+            Command.Parameters["mobile"].Value = owner.MobileNumber;
+
+            Command.Parameters.Add("address", SqlDbType.VarChar);
+            Command.Parameters["address"].Value = owner.Address;
+
+            Command.Parameters.Add("dob", SqlDbType.VarChar);
+            Command.Parameters["dob"].Value = owner.DateOfBirth;
+
+            Command.Parameters.Add("password", SqlDbType.VarChar);
+            Command.Parameters["password"].Value = owner.Password;
+
+            Connection.Open();
+
+            RowAffected = Command.ExecuteNonQuery();
+
+            Connection.Close();
+
+            return RowAffected;
+        }
+
+        public List<SelectListItem> GetAllOwner()
+        {
+            Query = "SELECT * FROM Owner";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            List<SelectListItem> items = new List<SelectListItem>()
+            {
+                new SelectListItem() {Value = "", Text = "Select a owner"}
+            };
+
+            while (Reader.Read())
+            {
+                SelectListItem item = new SelectListItem();
+                item.Value = Reader["owner_id"].ToString();
+                item.Text = Reader["owner_name"].ToString();
+
+                items.Add(item);
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return items;
+        }
     }
 }

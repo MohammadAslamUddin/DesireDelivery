@@ -14,7 +14,23 @@ namespace DesireDelivery.Manager
 
         public string Save(Owner owner)
         {
-            return "";
+            if (registerOwnerGateway.IsEmailExist(owner))
+            {
+                return "Data should be unique!";
+            }
+            else
+            {
+                int rowAffected = registerOwnerGateway.Save(owner);
+                if (rowAffected > 0)
+                {
+                    return "Owner Information saved!";
+                }
+                else
+                {
+                    return "Owner Information saving failed";
+                }
+            }
         }
+
     }
 }

@@ -1,0 +1,46 @@
+﻿@model DesireDelivery.Models.Restaurant
+
+@{
+    ViewBag.Title = "RegisterRestaurant";
+    List<SelectListItem> owners = ViewBag.owner;
+    string message = ViewBag.Message;
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Register Restaurant</legend>
+        <table class="table table-borderless d-grid">
+            <tbody>
+            <tr>
+                <td>@Html.LabelFor(l => l.RestaurantName)</td>
+                <td>@Html.TextBoxFor(t => t.RestaurantName)</td>
+                <td>@Html.ValidationMessageFor(v => v.RestaurantName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Address)</td>
+                <td>@Html.TextAreaFor(t => t.Address)</td>
+                <td>@Html.ValidationMessageFor(v => v.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.Mobile)</td>
+                <td>@Html.TextBoxFor(t => t.Mobile)</td>
+                <td>@Html.ValidationMessageFor(v => v.Mobile)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(l => l.OwnerId)</td>
+                <td>@Html.DropDownListFor(t => t.OwnerId, owners, "value", "Text")</td>
+                <td>@Html.ValidationMessageFor(v => v.OwnerId)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <label>@message</label>
+    </fieldset>
+}
