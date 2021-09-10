@@ -1,4 +1,5 @@
-﻿using DesireDelivery.Gateway;
+﻿using System;
+using DesireDelivery.Gateway;
 using DesireDelivery.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -25,10 +26,12 @@ namespace DesireDelivery.Manager
         {
             if (restaurantGateway.NameExist(restaurant))
             {
-                return "Restaurant name and email Should be unique";
+                return "Restaurant name and Mobile Number Should be unique";
             }
             else
             {
+                DateTime date = DateTime.Today;
+                restaurant.AddingDate = date;
                 int rowAffected = restaurantGateway.Save(restaurant);
                 if (rowAffected > 0)
                 {

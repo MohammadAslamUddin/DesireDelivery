@@ -8,6 +8,7 @@ namespace DesireDelivery.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Restaurant Name Needed")]
+        [Display(Name = "Restaurant Name")]
         public string RestaurantName { get; set; }
         [Required(ErrorMessage = "Restaurant Address Needed")]
         public string Address { get; set; }
@@ -16,6 +17,7 @@ namespace DesireDelivery.Models
         public string Mobile { get; set; }
         [Required(ErrorMessage = "Select Restaurant Owners Name")]
         public DateTime AddingDate { get; set; }
+        [Display(Name = "Owner Name")]
         public int OwnerId { get; set; }
     }
 }

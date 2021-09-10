@@ -1,4 +1,5 @@
 ﻿using DesireDelivery.Models;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -8,7 +9,7 @@ namespace DesireDelivery.Gateway
     {
         public bool NameExist(Restaurant restaurant)
         {
-            Query = "SELECT * FROM Restaurant WHERE restaurant_name = @name || restaurant_mobile = @mobile;";
+            Query = "SELECT * FROM Restaurant WHERE restaurant_name = @name OR restaurant_mobile = @mobile;";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
@@ -36,7 +37,7 @@ namespace DesireDelivery.Gateway
 
         public int Save(Restaurant restaurant)
         {
-            Query = "INSERT INTO Restaurant VALUES(@name,@address, @mobile, @ownerId);";
+            Query = "INSERT INTO Restaurant VALUES(@name, @date, @address, @mobile, @ownerId);";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
@@ -52,6 +53,9 @@ namespace DesireDelivery.Gateway
 
             Command.Parameters.Add("ownerId", SqlDbType.Int);
             Command.Parameters["ownerId"].Value = restaurant.OwnerId;
+
+            Command.Parameters.Add("date", SqlDbType.DateTime);
+            Command.Parameters["date"].Value = restaurant.AddingDate;
 
             Connection.Open();
 

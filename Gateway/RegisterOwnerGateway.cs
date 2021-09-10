@@ -1,5 +1,4 @@
 ﻿using DesireDelivery.Models;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -86,10 +85,10 @@ namespace DesireDelivery.Gateway
             while (Reader.Read())
             {
                 SelectListItem owner = new SelectListItem();
-               
+
                 owner.Value = Reader["owner_id"].ToString();
                 owner.Text = Reader["owner_name"].ToString();
-                
+
                 owners.Add(owner);
             }
 

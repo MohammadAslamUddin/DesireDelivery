@@ -39,7 +39,7 @@ namespace DesireDelivery.Controllers
         [HttpPost]
         public ActionResult RegisterRestaurant(Restaurant restaurant)
         {
-            ViewBag.owner = restaurantManager.GetAllOwner();
+            ViewBag.Owners = restaurantManager.GetAllOwner();
             ViewBag.Message = restaurantManager.Save(restaurant);
             return View();
         }
