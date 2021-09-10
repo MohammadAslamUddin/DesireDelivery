@@ -22,7 +22,7 @@ namespace DesireDelivery.Controllers
         {
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult RegisterOwner(Owner owner)
         {
             ViewBag.Message = registerOwnerManager.Save(owner);

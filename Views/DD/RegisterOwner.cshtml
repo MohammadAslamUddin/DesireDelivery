@@ -7,49 +7,51 @@
 
 @using (Html.BeginForm())
 {
-    <fieldset>
-        <legend>Register Owner</legend>
-        <table class="table table-borderless d-grid">
-            <tbody>
+<fieldset>
+    <legend>Register Owner</legend>
+    <table class="table table-borderless d-grid">
+        <tbody>
             <tr>
-                <td>@Html.LabelFor(l=>l.Name)</td>
-                <td>@Html.TextBoxFor(t=>t.Name)</td>
+                <td>@Html.LabelFor(l => l.Name)</td>
+                <td>@Html.TextBoxFor(t => t.Name)</td>
+                <td>@Html.ValidationMessageFor(v => v.Name)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.Email)</td>
-                <td>@Html.TextBoxFor(t=>t.Email)</td>
+                <td>@Html.LabelFor(l => l.Email)</td>
+                <td>@Html.TextBoxFor(t => t.Email)</td>
+                <td>@Html.ValidationMessageFor(v => v.Email)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.MobileNumber)</td>
-                <td>@Html.TextBoxFor(t=>t.MobileNumber)</td>
-                <td>@Html.ValidationMessageFor(v=>v.MobileNumber)</td>
+                <td>@Html.LabelFor(l => l.MobileNumber)</td>
+                <td>@Html.TextBoxFor(t => t.MobileNumber)</td>
+                <td>@Html.ValidationMessageFor(v => v.MobileNumber)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.Address)</td>
-                <td>@Html.TextBoxFor(t=>t.Address)</td>
-                <td>@Html.ValidationMessageFor(v=>v.Address)</td>
+                <td>@Html.LabelFor(l => l.Address)</td>
+                <td>@Html.TextBoxFor(t => t.Address)</td>
+                <td>@Html.ValidationMessageFor(v => v.Address)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.DateOfBirth)</td>
-                <td>@Html.TextBoxFor(t=>t.DateOfBirth)</td>
-                <td>@Html.ValidationMessageFor(v=>v.DateOfBirth)</td>
+                <td>@Html.LabelFor(l => l.DateOfBirth)</td>
+                <td>@Html.TextBoxFor(t => t.DateOfBirth)</td>
+                <td>@Html.ValidationMessageFor(v => v.DateOfBirth)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.Password)</td>
-                <td>@Html.TextBoxFor(t=>t.Password)</td>
-                <td>@Html.ValidationMessageFor(v=>v.Password)</td>
+                <td>@Html.LabelFor(l => l.Password)</td>
+                <td>@Html.TextBoxFor(t => t.Password)</td>
+                <td>@Html.ValidationMessageFor(v => v.Password)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(l=>l.ConfirmPassword)</td>
-                <td>@Html.TextBoxFor(t=>t.ConfirmPassword)</td>
-                <td>@Html.ValidationMessageFor(v=>v.ConfirmPassword)</td>
+                <td>@Html.LabelFor(l => l.ConfirmPassword)</td>
+                <td>@Html.TextBoxFor(t => t.ConfirmPassword)</td>
+                <td>@Html.ValidationMessageFor(v => v.ConfirmPassword)</td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save" class="btn"/></td>
+                <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
             </tr>
-            </tbody>
-            <label>@message</label> 
-        </table>
-    </fieldset>
+        </tbody>
+    </table>
+    <label>@message</label>
+</fieldset>
 }
