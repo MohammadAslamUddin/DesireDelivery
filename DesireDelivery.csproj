@@ -325,6 +325,8 @@
     <Content Include="Views\DD\Index.cshtml" />
     <Content Include="Views\DD\RegisterOwner.cshtml" />
     <Content Include="Views\DD\RegisterRestaurant.cshtml" />
+    <Content Include="Views\Shared\_LayoutUser.cshtml" />
+    <Content Include="Views\DD\Hello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
