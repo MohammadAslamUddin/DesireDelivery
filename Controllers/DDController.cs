@@ -1,5 +1,7 @@
 ﻿using DesireDelivery.Manager;
 using DesireDelivery.Models;
+using System;
+using System.IO;
 using System.Web.Mvc;
 
 namespace DesireDelivery.Controllers
@@ -27,6 +29,13 @@ namespace DesireDelivery.Controllers
         [HttpPost]
         public ActionResult RegisterOwner(Owner owner)
         {
+            string fileName = Path.GetFileNameWithoutExtension(owner.ImageFile.FileName);
+            string extension = Path.GetExtension(owner.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmddssfff") + extension;
+            owner.ImagePath = "~/Image/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+            owner.ImageFile.SaveAs(fileName);
+
             ViewBag.Message = registerOwnerManager.Save(owner);
             return View();
         }

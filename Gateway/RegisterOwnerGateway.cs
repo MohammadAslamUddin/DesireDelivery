@@ -39,7 +39,7 @@ namespace DesireDelivery.Gateway
 
         public int Save(Owner owner)
         {
-            Query = "INSERT INTO Owner VALUES(@name, @email, @mobile, @address, @dob, @password);";
+            Query = "INSERT INTO Owner VALUES(@name, @email, @mobile, @address, @dob, @password, @image);";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
@@ -61,6 +61,9 @@ namespace DesireDelivery.Gateway
 
             Command.Parameters.Add("password", SqlDbType.VarChar);
             Command.Parameters["password"].Value = owner.Password;
+
+            Command.Parameters.Add("image", SqlDbType.VarChar);
+            Command.Parameters["image"].Value = owner.ImagePath;
 
             Connection.Open();
 

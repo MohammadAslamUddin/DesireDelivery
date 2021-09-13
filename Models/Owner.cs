@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace DesireDelivery.Models
 {
@@ -26,5 +28,11 @@ namespace DesireDelivery.Models
         [NotMapped]
         [Compare("Password", ErrorMessage = "Not Matched, Please Enter the Password Correctly")]
         public string ConfirmPassword { get; set; }
+
+
+
+        [DisplayName("Image Path")]
+        public string ImagePath { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }
