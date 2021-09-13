@@ -23,10 +23,11 @@ namespace DesireDelivery.Models
         public DateTime DateOfBirth { get; set; }
         [Required(ErrorMessage = "Enter Account Password")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$", ErrorMessage = "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required(ErrorMessage = "Enter Password Again")]
         [NotMapped]
-        [Compare("Password", ErrorMessage = "Not Matched, Please Enter the Password Correctly")]
+        [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
 
