@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using DesireDelivery.Gateway.Owner;
+﻿using DesireDelivery.Gateway.Owner;
 using DesireDelivery.Models.OwnersA;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace DesireDelivery.Manager.Owner
 {
     public class FoodsViewManager
     {
         private FoodsViewGateway foodsViewGateway;
+        private RestaurantGateway restaurantGateway;
 
         public FoodsViewManager()
         {
             foodsViewGateway = new FoodsViewGateway();
+            restaurantGateway = new RestaurantGateway();
         }
 
         public string Save(Foods foods)
@@ -25,7 +25,7 @@ namespace DesireDelivery.Manager.Owner
             else
             {
                 int RowAffected = foodsViewGateway.Save(foods);
-                if (RowAffected>0)
+                if (RowAffected > 0)
                 {
                     return "Saved!";
                 }
@@ -34,6 +34,11 @@ namespace DesireDelivery.Manager.Owner
                     return "Saving Failed!";
                 }
             }
+        }
+
+        public List<SelectListItem> GetAllRestaurants()
+        {
+            return restaurantGateway.GetAllRestaurants();
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿@using System.Web.UI.WebControls
+@model DesireDelivery.Models.OwnersA.Foods
+
+@{
+    ViewBag.Title = "FoodsAdding";
+    string message = ViewBag.Message;
+    List<SelectListItem> restaurants = ViewBag.Restaurants;
+}
+
+@using (Html.BeginForm("FoodsAdding", "DD", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <legend>Food Adding</legend>
+        <table class="table table-borderless d-grid">
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(l => l.FoodName)</td>
+                    <td>@Html.TextBoxFor(t => t.FoodName)</td>
+                    <td>@Html.ValidationMessageFor(v => v.FoodName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(l => l.Price)</td>
+                    <td>@Html.TextBoxFor(t => t.Price)</td>
+                    <td>@Html.ValidationMessageFor(v => v.Price)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(l => l.RestaurantName)</td>
+                    <td>@Html.DropDownListFor(t => t.RestaurantName, restaurants, "Value", "Text")</td>
+                    <td>@Html.ValidationMessageFor(v => v.RestaurantName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(l => l.ImagePath)</td>
+                    <td><input type="file" name="ImageFile" required /></td>
+                    <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <label>@message</label>
+    </fieldset>
+}

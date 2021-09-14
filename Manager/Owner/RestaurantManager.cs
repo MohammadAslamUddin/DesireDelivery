@@ -1,6 +1,7 @@
-﻿using System;
-using DesireDelivery.Gateway;
+﻿using DesireDelivery.Gateway;
+using DesireDelivery.Gateway.Owner;
 using DesireDelivery.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 

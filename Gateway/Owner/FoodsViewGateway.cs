@@ -8,15 +8,15 @@ namespace DesireDelivery.Gateway.Owner
     {
         public bool IsFoodExist(Foods foods)
         {
-            Query = "";
+            Query = "SELECT * FROM Food WHERE food_name = @food AND restaurant_id = @resturant;";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
-            Command.Parameters.Add("name", SqlDbType.VarChar);
-            Command.Parameters["name"].Value = foods.FoodName;
+            Command.Parameters.Add("food", SqlDbType.VarChar);
+            Command.Parameters["food"].Value = foods.FoodName;
 
-            Command.Parameters.Add("mobile", SqlDbType.VarChar);
-            Command.Parameters["mobile"].Value = foods.RestaurantName;
+            Command.Parameters.Add("resturant", SqlDbType.VarChar);
+            Command.Parameters["resturant"].Value = foods.RestaurantName;
 
             Connection.Open();
 
@@ -36,7 +36,7 @@ namespace DesireDelivery.Gateway.Owner
 
         public int Save(Foods foods)
         {
-            Query = "";
+            Query = "INSERT INTO Food VALUES(@name, @restaurant, @price, @image);";
             Command = new SqlCommand(Query, Connection);
 
             Command.Parameters.Clear();
@@ -44,14 +44,14 @@ namespace DesireDelivery.Gateway.Owner
             Command.Parameters.Add("name", SqlDbType.VarChar);
             Command.Parameters["name"].Value = foods.FoodName;
 
-            Command.Parameters.Add("", SqlDbType.VarChar);
-            Command.Parameters[""].Value = foods.ImagePath;
+            Command.Parameters.Add("image", SqlDbType.VarChar);
+            Command.Parameters["image"].Value = foods.ImagePath;
 
             Command.Parameters.Add("price", SqlDbType.VarChar);
             Command.Parameters["price"].Value = foods.Price;
 
-            Command.Parameters.Add("address", SqlDbType.Int);
-            Command.Parameters["address"].Value = foods.RestaurantName;
+            Command.Parameters.Add("restaurant", SqlDbType.Int);
+            Command.Parameters["restaurant"].Value = foods.RestaurantName;
 
             Connection.Open();
 

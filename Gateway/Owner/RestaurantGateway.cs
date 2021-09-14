@@ -1,6 +1,8 @@
 ﻿using DesireDelivery.Models;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Mvc;
 
 namespace DesireDelivery.Gateway.Owner
 {
@@ -65,5 +67,25 @@ namespace DesireDelivery.Gateway.Owner
             return RowAffected;
         }
 
+        public List<SelectListItem> GetAllRestaurants()
+        {
+            Query = "SELECT * FROM Restaurant";
+            Command = new SqlCommand(Query, Connection);
+            Connection.Open();
+            Reader = Command.ExecuteReader();
+            List<SelectListItem> restaurants = new List<SelectListItem>();
+            while (Reader.Read())
+            {
+                SelectListItem restaurant = new SelectListItem();
+                restaurant.Value = Reader["restaurant_id"].ToString();
+                restaurant.Text = Reader["restaurant_name"].ToString();
+
+                restaurants.Add(restaurant);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return restaurants;
+        }
     }
 }

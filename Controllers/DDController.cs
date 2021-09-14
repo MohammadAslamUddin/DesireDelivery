@@ -57,12 +57,13 @@ namespace DesireDelivery.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult FoodsView()
+        public ActionResult FoodsAdding()
         {
+            ViewBag.Restaurants = foodsViewManager.GetAllRestaurants();
             return View();
         }
         [HttpPost]
-        public ActionResult FoodsView(Foods foods)
+        public ActionResult FoodsAdding(Foods foods)
         {
             string fileName = Path.GetFileNameWithoutExtension(foods.ImageFile.FileName);
             string extension = Path.GetExtension(foods.ImageFile.FileName);
@@ -72,6 +73,7 @@ namespace DesireDelivery.Controllers
             foods.ImageFile.SaveAs(fileName);
 
             ViewBag.Message = foodsViewManager.Save(foods);
+            ViewBag.Restaurants = foodsViewManager.GetAllRestaurants();
             return View();
         }
     }
