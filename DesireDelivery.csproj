@@ -176,16 +176,17 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
-    <Compile Include="Gateway\Owner\FoodsViewGateway.cs" />
+    <Compile Include="Gateway\Owner\FoodsGateway.cs" />
     <Compile Include="Gateway\Owner\RegisterOwnerGateway.cs" />
     <Compile Include="Gateway\Owner\RestaurantGateway.cs" />
     <Compile Include="Gateway\User\RegisterUserGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Manager\Owner\FoodsViewManager.cs" />
+    <Compile Include="Manager\Owner\FoodsManager.cs" />
     <Compile Include="Manager\Owner\RegisterOwnerManager.cs" />
     <Compile Include="Manager\Owner\RestaurantManager.cs" />
+    <Compile Include="Manager\User\FoodsViewManager.cs" />
     <Compile Include="Manager\User\RegisterUserManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -336,6 +337,7 @@
     <Content Include="Views\DDUser\Index.cshtml" />
     <Content Include="Views\DDUser\RegisterUser.cshtml" />
     <Content Include="Views\DD\FoodsAdding.cshtml" />
+    <Content Include="Views\DDUser\FoodsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

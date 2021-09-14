@@ -10,6 +10,7 @@ namespace DesireDelivery.Models.OwnersA
         public string FoodName { get; set; }
         [Display(Name = "Restaurant Name")]
         public int RestaurantName { get; set; }
+        public string Restaurant { get; set; }
         public string Price { get; set; }
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }

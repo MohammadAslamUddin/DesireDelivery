@@ -1,10 +1,11 @@
 ﻿using DesireDelivery.Models.OwnersA;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace DesireDelivery.Gateway.Owner
 {
-    public class FoodsViewGateway : CommonGateway
+    public class FoodsGateway : CommonGateway
     {
         public bool IsFoodExist(Foods foods)
         {
@@ -60,6 +61,30 @@ namespace DesireDelivery.Gateway.Owner
             Connection.Close();
 
             return RowAffected;
+        }
+
+        public List<Foods> GetFoodBySearching(string stri)
+        {
+            Query = "SELECT * FROM ";
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            Reader = Command.ExecuteReader();
+            List<Foods> foods = new List<Foods>();
+            while (Reader.Read())
+            {
+                Foods food = new Foods();
+                food.FoodName = Reader["food_name"].ToString();
+                food.Restaurant = Reader["restaurant_name"].ToString();
+                food.Price = Reader["food_price"].ToString();
+                food.ImagePath = Reader["food_image"].ToString();
+
+                foods.Add(food);
+            }
+            Reader.Close();
+            Connection.Close();
+
+            return foods;
         }
     }
 }

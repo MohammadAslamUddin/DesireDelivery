@@ -13,13 +13,13 @@ namespace DesireDelivery.Controllers
         // GET: DD
         private RegisterOwnerManager registerOwnerManager;
         private RestaurantManager restaurantManager;
-        private FoodsViewManager foodsViewManager;
+        private FoodsManager foodsViewManager;
 
         public DDController()
         {
             registerOwnerManager = new RegisterOwnerManager();
             restaurantManager = new RestaurantManager();
-            foodsViewManager = new FoodsViewManager();
+            foodsViewManager = new FoodsManager();
         }
         public ActionResult Index()
         {

@@ -5,14 +5,14 @@ using System.Web.Mvc;
 
 namespace DesireDelivery.Manager.Owner
 {
-    public class FoodsViewManager
+    public class FoodsManager
     {
-        private FoodsViewGateway foodsViewGateway;
+        private FoodsGateway foodsViewGateway;
         private RestaurantGateway restaurantGateway;
 
-        public FoodsViewManager()
+        public FoodsManager()
         {
-            foodsViewGateway = new FoodsViewGateway();
+            foodsViewGateway = new FoodsGateway();
             restaurantGateway = new RestaurantGateway();
         }
 

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "FoodsView";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@using (Html.BeginForm("FoodsView", "DDUser", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    <fieldset>
+        <legend>Food View</legend>
+        <table class="table table-borderless d-grid">
+            <tr>
+                <td><input type="text" id="Search" placeholder="Enter a food name"/></td>
+                <td><input type="button" value="Submit"/></td>
+            </tr>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Food Name</th>
+                <th>Restaurant Name</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            </thead>
+            <tbody id="tablebody">
+
+            </tbody>
+        </table>
+    </fieldset>
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#Search").on('change', function() {
+
+                var str = $("#Search").val();
+                var json = { stri : str };
+
+                $.ajax({
+                    type: "Post",
+                    url: '@Url.Action("GetFoodBySearching","DDUser")',
+                    contentType: 'application/json',
+                    data: JSON.stringify(json),
+                    success: function (response) {
+                        $("#tablebody").empty();
+                        $.each(response, function(key, value) {
+                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.RestaurantName + '</td><td>' + value.ImagePath + '</td><tr>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

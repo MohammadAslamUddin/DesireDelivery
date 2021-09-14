@@ -1,6 +1,8 @@
 ﻿using DesireDelivery.Manager.User;
 using DesireDelivery.Models;
+using DesireDelivery.Models.OwnersA;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 
@@ -9,10 +11,12 @@ namespace DesireDelivery.Controllers
     public class DDUserController : Controller
     {
         private RegisterUserManager registerUserManager;
+        private FoodsViewManager foodsViewManager;
 
         public DDUserController()
         {
             registerUserManager = new RegisterUserManager();
+            foodsViewManager = new FoodsViewManager();
         }
 
         // GET: DDUser
@@ -36,6 +40,24 @@ namespace DesireDelivery.Controllers
             user.ImageFile.SaveAs(fileName);
 
             ViewBag.Message = registerUserManager.Save(user);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult FoodsView()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetFoodBySearching(string stri)
+        {
+            List<Foods> foods = foodsViewManager.GetFoodBySearching(stri);
+            return Json(foods);
+        }
+        [HttpPost]
+        public ActionResult FoodsView(int id)
+        {
             return View();
         }
     }
