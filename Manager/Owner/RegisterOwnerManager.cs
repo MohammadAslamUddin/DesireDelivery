@@ -1,5 +1,4 @@
 ﻿using DesireDelivery.Gateway;
-using DesireDelivery.Models;
 
 namespace DesireDelivery.Manager
 {
@@ -12,7 +11,7 @@ namespace DesireDelivery.Manager
             registerOwnerGateway = new RegisterOwnerGateway();
         }
 
-        public string Save(Owner owner)
+        public string Save(Models.Owner owner)
         {
             if (registerOwnerGateway.IsEmailExist(owner))
             {

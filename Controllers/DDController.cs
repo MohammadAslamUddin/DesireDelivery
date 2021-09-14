@@ -1,5 +1,7 @@
 ﻿using DesireDelivery.Manager;
+using DesireDelivery.Manager.Owner;
 using DesireDelivery.Models;
+using DesireDelivery.Models.OwnersA;
 using System;
 using System.IO;
 using System.Web.Mvc;
@@ -11,11 +13,13 @@ namespace DesireDelivery.Controllers
         // GET: DD
         private RegisterOwnerManager registerOwnerManager;
         private RestaurantManager restaurantManager;
+        private FoodsViewManager foodsViewManager;
 
         public DDController()
         {
             registerOwnerManager = new RegisterOwnerManager();
             restaurantManager = new RestaurantManager();
+            foodsViewManager = new FoodsViewManager();
         }
         public ActionResult Index()
         {
@@ -58,8 +62,16 @@ namespace DesireDelivery.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult FoodsView()
+        public ActionResult FoodsView(Foods foods)
         {
+            string fileName = Path.GetFileNameWithoutExtension(foods.ImageFile.FileName);
+            string extension = Path.GetExtension(foods.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmddssfff") + extension;
+            foods.ImagePath = "~/Image/" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+            foods.ImageFile.SaveAs(fileName);
+
+            ViewBag.Message = foodsViewManager.Save(foods);
             return View();
         }
     }

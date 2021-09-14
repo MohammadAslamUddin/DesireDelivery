@@ -1,9 +1,8 @@
 ﻿using DesireDelivery.Models;
-using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DesireDelivery.Gateway
+namespace DesireDelivery.Gateway.Owner
 {
     public class RestaurantGateway : CommonGateway
     {

@@ -176,21 +176,24 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
-    <Compile Include="Gateway\RegisterOwnerGateway.cs" />
-    <Compile Include="Gateway\RestaurantGateway.cs" />
+    <Compile Include="Gateway\Owner\FoodsViewGateway.cs" />
+    <Compile Include="Gateway\Owner\RegisterOwnerGateway.cs" />
+    <Compile Include="Gateway\Owner\RestaurantGateway.cs" />
     <Compile Include="Gateway\User\RegisterUserGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Manager\RegisterOwnerManager.cs" />
-    <Compile Include="Manager\RestaurantManager.cs" />
+    <Compile Include="Manager\Owner\FoodsViewManager.cs" />
+    <Compile Include="Manager\Owner\RegisterOwnerManager.cs" />
+    <Compile Include="Manager\Owner\RestaurantManager.cs" />
     <Compile Include="Manager\User\RegisterUserManager.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\OwnersA\Foods.cs" />
+    <Compile Include="Models\OwnersA\Owner.cs" />
     <Compile Include="Models\User\RegisterUser.cs" />
-    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="Models\OwnersA\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

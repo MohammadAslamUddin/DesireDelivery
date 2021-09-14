@@ -1,5 +1,4 @@
-﻿using DesireDelivery.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Mvc;
@@ -8,7 +7,7 @@ namespace DesireDelivery.Gateway
 {
     public class RegisterOwnerGateway : CommonGateway
     {
-        public bool IsEmailExist(Owner owner)
+        public bool IsEmailExist(Models.Owner owner)
         {
             Query = "SELECT * FROM Owner WHERE owner_email = @email OR owner_mobile = @mobile";
             Command = new SqlCommand(Query, Connection);
@@ -37,7 +36,7 @@ namespace DesireDelivery.Gateway
             return hasrow;
         }
 
-        public int Save(Owner owner)
+        public int Save(Models.Owner owner)
         {
             Query = "INSERT INTO Owner VALUES(@name, @email, @mobile, @address, @dob, @password, @image);";
             Command = new SqlCommand(Query, Connection);
