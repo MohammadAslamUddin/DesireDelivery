@@ -65,3 +65,14 @@
 </fieldset>    
     
 }
+@section scripts
+{
+    <script>
+        $(function() {
+            $("#UserDateOfBirth").datepicker(
+                {
+                    dateFormat: "yy-dd-mm"
+                });
+        });
+    </script>
+}

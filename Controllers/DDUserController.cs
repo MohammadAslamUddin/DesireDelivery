@@ -15,9 +15,6 @@ namespace DesireDelivery.Controllers
             registerUserManager = new RegisterUserManager();
         }
 
-
-
-
         // GET: DDUser
         public ActionResult Index()
         {
