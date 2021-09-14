@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("RegisterOwner", "DD", FormMethod.Post, new {enctype="multipart/form-data"}))
 {
+    @Html.AntiForgeryToken()
     <fieldset>
         <legend>Register Owner</legend>
         <table class="table table-borderless d-grid">
@@ -48,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(l => l.ImagePath)</td>
-                    <td><input type="file" name="ImagePath" required/></td>
+                    <td><input type="file" name="ImageFile" required/></td>
                     <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
                 </tr>
                 <tr>

@@ -21,7 +21,7 @@ namespace DesireDelivery.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public ActionResult RegisterOwner()
         {
             return View();
