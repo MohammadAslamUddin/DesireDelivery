@@ -65,8 +65,12 @@ namespace DesireDelivery.Gateway.Owner
 
         public List<Foods> GetFoodBySearching(string stri)
         {
-            Query = "SELECT * FROM ";
+            Query = "SELECT food.food_id,food.food_name,food.food_image,food.food_price,Restaurant.restaurant_name FROM Food full join Restaurant on Food.restaurant_id = Restaurant.restaurant_id WHERE food.food_name LIKE @name;";
             Command = new SqlCommand(Query, Connection);
+
+            Command.Parameters.Clear();
+            Command.Parameters.Add("name", SqlDbType.VarChar);
+            Command.Parameters["name"].Value = "%"+stri+"%";
 
             Connection.Open();
             Reader = Command.ExecuteReader();

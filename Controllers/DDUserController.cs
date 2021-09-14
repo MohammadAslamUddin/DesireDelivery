@@ -55,10 +55,10 @@ namespace DesireDelivery.Controllers
             List<Foods> foods = foodsViewManager.GetFoodBySearching(stri);
             return Json(foods);
         }
-        [HttpPost]
-        public ActionResult FoodsView(int id)
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult FoodsView()
+        //{
+        //    return View();
+        //}
     }
 }
