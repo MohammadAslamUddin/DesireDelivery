@@ -52,8 +52,13 @@ namespace DesireDelivery.Controllers
             ViewBag.Message = restaurantManager.Save(restaurant);
             return View();
         }
-
-        public ActionResult Hello()
+        [HttpGet]
+        public ActionResult FoodsView()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult FoodsView()
         {
             return View();
         }
