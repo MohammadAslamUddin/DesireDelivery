@@ -1,7 +1,9 @@
-﻿
+﻿@using DesireDelivery.Models.OwnersA
+
 @{
     ViewBag.Title = "FoodsView";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    List<Foods> foods = ViewBag.Foods;
 }
 
 @using (Html.BeginForm("FoodsView", "DDUser", FormMethod.Post, new {enctype = "multipart/form-data"}))
@@ -11,10 +13,10 @@
         <table class="table table-borderless d-grid">
             <tr>
                 <td><input type="text" id="Search" placeholder="Enter a food name"/></td>
-                <td><input type="button" value="Submit"/></td>
+                <td><input type="button" value="Submit" id="Submit"/></td>
             </tr>
         </table>
-        <table>
+        <table class="table table-bordered" id="table11">
             <thead>
             <tr>
                 <th>Food Name</th>
@@ -25,10 +27,27 @@
             </thead>
             <tbody id="tablebody">
 
+                @*@if (foods!=null)
+                {
+                    foreach (var food in Model)
+                {
+                    <tr>
+                        <td>@food.FoodName</td>
+                        <td>@food.Restaurant</td>
+                        <td>@food.Price</td>
+                        <td>@food.ImagePath</td>
+                    </tr>
+                }
+                }
+                else
+        {
+            <label>"No data Found!"</label>
+        }*@
             </tbody>
         </table>
-    </fieldset>
+</fieldset>
 }
+
 
 @section scripts
 {
@@ -37,17 +56,19 @@
             $("#Search").on('change', function() {
 
                 var str = $("#Search").val();
-                var json = { stri : str };
-
+                var json = { stri: str };
+                $("#tablebody").empty();
                 $.ajax({
                     type: "Post",
-                    url: '@Url.Action("GetFoodBySearching","DDUser")',
+                    url: '@Url.Action("GetFoodBySearching", "DDUser")',
                     contentType: 'application/json',
                     data: JSON.stringify(json),
+                    error: function (error) {
+                        alert("No data found");
+                    },
                     success: function (response) {
-                        $("#tablebody").empty();
                         $.each(response, function(key, value) {
-                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.RestaurantName + '</td><td>' + value.ImagePath + '</td><tr>');
+                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.Restaurant + '</td><td>' + value.ImagePath + '</td></tr>');
                         });
                     }
                 });
