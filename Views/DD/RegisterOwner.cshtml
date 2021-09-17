@@ -5,7 +5,7 @@
 }
 
 
-@using (Html.BeginForm("RegisterOwner", "DD", FormMethod.Post, new {enctype="multipart/form-data"}))
+@*@using (Html.BeginForm("RegisterOwner", "DD", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <fieldset>
@@ -13,9 +13,14 @@
         <table class="table table-borderless d-grid">
             <tbody>
                 <tr>
-                    <td>@Html.LabelFor(l => l.Name)</td>
-                    <td>@Html.TextBoxFor(t => t.Name)</td>
-                    <td>@Html.ValidationMessageFor(v => v.Name)</td>
+                    <td>@Html.LabelFor(l => l.FirstName)</td>
+                    <td>@Html.TextBoxFor(t => t.FirstName)</td>
+                    <td>@Html.ValidationMessageFor(v => v.FirstName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(l => l.SurName)</td>
+                    <td>@Html.TextBoxFor(t => t.SurName)</td>
+                    <td>@Html.ValidationMessageFor(v => v.SurName)</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(l => l.Email)</td>
@@ -49,7 +54,7 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(l => l.ImagePath)</td>
-                    <td><input type="file" name="ImageFile" required/></td>
+                    <td><input type="file" name="ImageFile" required /></td>
                     <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
                 </tr>
                 <tr>
@@ -60,17 +65,99 @@
         </table>
         <label>@message</label>
     </fieldset>
-}
+}*@
 
 
 @section scripts
 {
     <script>
-        $(function() {
+        $(function () {
             $("#DateOfBirth").datepicker(
-            {
-                dateFormat: "yy-dd-mm"
-            });
+                {
+                    dateFormat: "yy-dd-mm"
+                });
         });
     </script>
+}
+
+
+@using (Html.BeginForm("RegisterOwner", "DD", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-4 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">John</span><span class="text-black-50">John@mail.com.my</span><span class="text-black-50">Lecturer of CSE,USTC</span></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Register Owner</h4>
+                        </div>
+                        <table class="table table-borderless d-grid">
+                            <tbody>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.FirstName)</td>
+                                    <td>@Html.TextBoxFor(t => t.FirstName)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.FirstName)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.SurName)</td>
+                                    <td>@Html.TextBoxFor(t => t.SurName)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.SurName)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Email)</td>
+                                    <td>@Html.TextBoxFor(t => t.Email)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.Email)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.MobileNumber)</td>
+                                    <td>@Html.TextBoxFor(t => t.MobileNumber)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.MobileNumber)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Address)</td>
+                                    <td>@Html.TextAreaFor(t => t.Address)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.Address)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.DateOfBirth)</td>
+                                    <td>@Html.EditorFor(t => t.DateOfBirth)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.DateOfBirth)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Password)</td>
+                                    <td>@Html.TextBoxFor(t => t.Password)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.Password)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.ConfirmPassword)</td>
+                                    <td>@Html.TextBoxFor(t => t.ConfirmPassword)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.ConfirmPassword)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.ImagePath)</td>
+                                    <td><input type="file" name="ImageFile" required /></td>
+                                    <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-purple" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @*<div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                        <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                        <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </fieldset>
 }

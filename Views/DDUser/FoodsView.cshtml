@@ -68,7 +68,7 @@
                     },
                     success: function (response) {
                         $.each(response, function(key, value) {
-                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.Restaurant + '</td><td>' + value.ImagePath + '</td></tr>');
+                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.Restaurant + '</td><td><img src =' + value.ImagePath + '/></td></tr>');
                         });
                     }
                 });

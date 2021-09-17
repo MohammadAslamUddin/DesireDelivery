@@ -9,8 +9,10 @@ namespace DesireDelivery.Models
     public class Owner
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "Enter Owner's Name")]
-        public string Name { get; set; }
+        [Required(ErrorMessage = "Enter Owner's First Name")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Enter Owner's SurName")]
+        public string SurName { get; set; }
         [Required(ErrorMessage = "Enter Owner's Email")]
         [RegularExpression(@"^([\w.-]+)@([\w-]+)((.(\w){2,3})+)$", ErrorMessage = "Valid Email Id Needed!")]
         public string Email { get; set; }

@@ -44,7 +44,7 @@ namespace DesireDelivery.Gateway
             Command.Parameters.Clear();
 
             Command.Parameters.Add("name", SqlDbType.VarChar);
-            Command.Parameters["name"].Value = owner.Name;
+            Command.Parameters["name"].Value = owner.SurName;
 
             Command.Parameters.Add("email", SqlDbType.VarChar);
             Command.Parameters["email"].Value = owner.Email;
