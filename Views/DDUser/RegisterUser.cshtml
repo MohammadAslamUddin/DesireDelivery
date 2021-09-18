@@ -9,56 +9,68 @@
 @using (Html.BeginForm("RegisterUser","DDUser",FormMethod.Post, new {enctype= "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-<fieldset>
-    <legend>Register User</legend>
-    <table class="table table-borderless d-grid">
-        <tbody>
-            <tr>
-                <td>@Html.LabelFor(l => l.UserName)</td>
-                <td>@Html.TextBoxFor(t => t.UserName)</td>
-                <td>@Html.ValidationMessageFor(v => v.UserName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.UserEmail)</td>
-                <td>@Html.TextBoxFor(t => t.UserEmail)</td>
-                <td>@Html.ValidationMessageFor(v => v.UserEmail)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.UserContact)</td>
-                <td>@Html.TextBoxFor(t => t.UserContact)</td>
-                <td>@Html.ValidationMessageFor(v => v.UserContact)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.USerAddress)</td>
-                <td>@Html.TextAreaFor(t => t.USerAddress)</td>
-                <td>@Html.ValidationMessageFor(v => v.USerAddress)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.UserDateOfBirth)</td>
-                <td>@Html.EditorFor(t => t.UserDateOfBirth)</td>
-                <td>@Html.ValidationMessageFor(v => v.UserDateOfBirth)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.Password)</td>
-                <td>@Html.TextBoxFor(t => t.Password)</td>
-                <td>@Html.ValidationMessageFor(v => v.Password)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.ConfirmPassword)</td>
-                <td>@Html.TextBoxFor(t => t.ConfirmPassword)</td>
-                <td>@Html.ValidationMessageFor(v => v.ConfirmPassword)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.ImagePath)</td>
-                <td><input type="file" name="ImageFile" required /></td>
-                <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
-            </tr>
-        </tbody>
-    </table>
+<fieldset><div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+    <div class="col-md-4 br">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">John</span><span class="text-black-50">John@mail.com.my</span><span class="text-black-50">Lecturer of CSE,USTC</span></div>
+    </div>
+        <div class="col-md-7">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Register Owner</h4>
+                </div>
+                <table class="table table-borderless d-grid">
+                    <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.UserName)</td>
+                        <td>@Html.TextBoxFor(t => t.UserName)</td>
+                        <td>@Html.ValidationMessageFor(v => v.UserName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.UserEmail)</td>
+                        <td>@Html.TextBoxFor(t => t.UserEmail)</td>
+                        <td>@Html.ValidationMessageFor(v => v.UserEmail)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.UserContact)</td>
+                        <td>@Html.TextBoxFor(t => t.UserContact)</td>
+                        <td>@Html.ValidationMessageFor(v => v.UserContact)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.USerAddress)</td>
+                        <td>@Html.TextAreaFor(t => t.USerAddress)</td>
+                        <td>@Html.ValidationMessageFor(v => v.USerAddress)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.UserDateOfBirth)</td>
+                        <td>@Html.EditorFor(t => t.UserDateOfBirth)</td>
+                        <td>@Html.ValidationMessageFor(v => v.UserDateOfBirth)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.Password)</td>
+                        <td>@Html.TextBoxFor(t => t.Password)</td>
+                        <td>@Html.ValidationMessageFor(v => v.Password)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.ConfirmPassword)</td>
+                        <td>@Html.TextBoxFor(t => t.ConfirmPassword)</td>
+                        <td>@Html.ValidationMessageFor(v => v.ConfirmPassword)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(l => l.ImagePath)</td>
+                        <td><input type="file" name="ImageFile" required /></td>
+                        <td>@Html.ValidationMessageFor(v => v.ImagePath)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
+                    </tr>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <label>@message</label>
 </fieldset>    
     
