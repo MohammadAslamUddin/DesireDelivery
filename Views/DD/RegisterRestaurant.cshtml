@@ -9,39 +9,52 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("RegisterRestaurant", "DD", FormMethod.Post))
 {
     <fieldset>
-        <legend>Register Restaurant</legend>
-        <table class="table table-borderless d-grid">
-            <tbody>
-            <tr>
-                <td>@Html.LabelFor(l => l.RestaurantName)</td>
-                <td>@Html.TextBoxFor(t => t.RestaurantName)</td>
-                <td>@Html.ValidationMessageFor(v => v.RestaurantName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.Address)</td>
-                <td>@Html.TextAreaFor(t => t.Address)</td>
-                <td>@Html.ValidationMessageFor(v => v.Address)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.Mobile)</td>
-                <td>@Html.TextBoxFor(t => t.Mobile)</td>
-                <td>@Html.ValidationMessageFor(v => v.Mobile)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(l => l.OwnerId)</td>
-                <td>@Html.DropDownListFor(t => t.OwnerId, owners, "value", "Text")</td>
-                <td>@Html.ValidationMessageFor(v => v.OwnerId)</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
-            </tr>
-            </tbody>
-        </table>
-        <label>@message</label>
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-4 br">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">John</span><span class="text-black-50">John@mail.com.my</span><span class="text-black-50">Lecturer of CSE,USTC</span></div>
+                </div>
+                <div class="col-md-7">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Register Owner</h4>
+                        </div>
+                        <table class="table table-borderless d-grid">
+                            <tbody>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.RestaurantName)</td>
+                                    <td>@Html.TextBoxFor(t => t.RestaurantName)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.RestaurantName)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Address)</td>
+                                    <td>@Html.TextAreaFor(t => t.Address)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.Address)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.Mobile)</td>
+                                    <td>@Html.TextBoxFor(t => t.Mobile)</td>
+                                    <td>@Html.ValidationMessageFor(v => v.Mobile)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.LabelFor(l => l.OwnerId)</td>
+                                    <td>@Html.DropDownListFor(t => t.OwnerId, owners, "value", "Text")</td>
+                                    <td>@Html.ValidationMessageFor(v => v.OwnerId)</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="righttxt"><input type="submit" value="Save" class="btn btn-outline-secondary" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label>@message</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </fieldset>
 }
 
