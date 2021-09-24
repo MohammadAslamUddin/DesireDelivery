@@ -60,6 +60,9 @@ namespace DesireDelivery.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Display(Name = "Login As")]
+        public int LogInAs { get; set; }
     }
 
     public class RegisterViewModel
