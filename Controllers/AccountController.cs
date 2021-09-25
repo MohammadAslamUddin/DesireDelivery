@@ -2,7 +2,6 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -56,16 +55,6 @@ namespace DesireDelivery.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-
-            List<SelectListItem> list = _signInManager.GetList();
-            if (list == null)
-            {
-                ViewBag.List = null;
-            }
-            else
-            {
-                ViewBag.List = list;
-            }
             return View();
         }
 
@@ -76,7 +65,6 @@ namespace DesireDelivery.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            ViewBag.List = _signInManager.GetList();
             if (!ModelState.IsValid)
             {
                 return View(model);

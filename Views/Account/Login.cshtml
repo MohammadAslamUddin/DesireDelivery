@@ -1,69 +1,13 @@
 ﻿@using DesireDelivery.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Log in";
-    List<SelectListItem> list = ViewBag.List;
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div class="bg-light mt-4 p-4">
-                <section id="loginForm">
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "row g-3", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <h4>Welcome Back</h4>
-                        <div class="col-12">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-12">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2" })
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-12">
-                            @Html.LabelFor(m => m.LogInAs, new { @class = "col-md-2" })<br />
-                            @Html.DropDownListFor(m => m.LogInAs, @list, "Value", "Text")<br />
-                            @Html.ValidationMessageFor(m => m.LogInAs, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
-                                @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label  " })
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-dark float-end">Login</button>
-                        </div>
-                    }
-                </section>
-                <hr class="mt-4">
-                <div class="col-12">
-                    <p class="text-center mb-0">Have not account yet?  @Html.ActionLink("Signp", "Register")</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@*<div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
-    </div>*@
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-
-@*<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>How To Create Simple Login Form Design In Bootstrap 5</title>
+    <title>LogIn</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @Styles.Render("~/Content/css")
@@ -90,11 +34,6 @@
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-12">
-                            @Html.LabelFor(m => m.LogInAs, new { @class = "col-md-2" })<br />
-                            @Html.DropDownListFor(m => m.LogInAs, @list, "Value", "Text")<br />
-                            @Html.ValidationMessageFor(m => m.LogInAs, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-12">
                             <div class="form-check">
                                 @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
                                 @Html.LabelFor(m => m.RememberMe, new { @class = "form-check-label  " })
@@ -113,7 +52,7 @@
         </div>
     </div>
     <script>
-    @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/jqueryval")
     </script>
 </body>
-</html>*@
+</html>

@@ -21,6 +21,7 @@ namespace DesireDelivery.Controllers
             restaurantManager = new RestaurantManager();
             foodsViewManager = new FoodsManager();
         }
+        [Authorize]
         public ActionResult Index()
         {
             return View();

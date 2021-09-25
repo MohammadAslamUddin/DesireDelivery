@@ -20,6 +20,7 @@ namespace DesireDelivery.Controllers
         }
 
         // GET: DDUser
+        [Authorize]
         public ActionResult Index()
         {
             return View();
