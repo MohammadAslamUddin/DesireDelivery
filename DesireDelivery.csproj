@@ -335,9 +335,9 @@
     <Content Include="Views\DD\RegisterRestaurant.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\DDUser\Index.cshtml" />
-    <Content Include="Views\DDUser\RegisterUser.cshtml" />
+    <Content Include="Views\DD\RegisterUser.cshtml" />
     <Content Include="Views\DD\FoodsAdding.cshtml" />
-    <Content Include="Views\DDUser\FoodsView.cshtml" />
+    <Content Include="Views\DD\FoodsView.cshtml" />
     <Content Include="Views\Shared\_LoginPartialUser.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
