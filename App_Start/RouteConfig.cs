@@ -12,7 +12,7 @@ namespace DesireDelivery
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "DD", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Foods", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
