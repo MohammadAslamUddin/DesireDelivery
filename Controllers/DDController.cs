@@ -1,8 +1,10 @@
 ﻿using DesireDelivery.Manager;
 using DesireDelivery.Manager.Owner;
+using DesireDelivery.Manager.User;
 using DesireDelivery.Models;
 using DesireDelivery.Models.OwnersA;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 
@@ -13,14 +15,23 @@ namespace DesireDelivery.Controllers
         // GET: DD
         private RegisterOwnerManager registerOwnerManager;
         private RestaurantManager restaurantManager;
-        private FoodsManager foodsViewManager;
+        private FoodsManager foodsManager;
+        private RegisterUserManager registerUserManager;
+        private FoodsViewManager foodsViewManager;
 
         public DDController()
         {
             registerOwnerManager = new RegisterOwnerManager();
             restaurantManager = new RestaurantManager();
-            foodsViewManager = new FoodsManager();
+            foodsManager = new FoodsManager();
+            registerUserManager = new RegisterUserManager();
+            foodsViewManager = new FoodsViewManager();
         }
+
+
+
+
+        //-------------------------------------Owner -------------------------------------------------------------
         [Authorize]
         public ActionResult Index()
         {
@@ -60,7 +71,7 @@ namespace DesireDelivery.Controllers
         [HttpGet]
         public ActionResult FoodsAdding()
         {
-            ViewBag.Restaurants = foodsViewManager.GetAllRestaurants();
+            ViewBag.Restaurants = foodsManager.GetAllRestaurants();
             return View();
         }
         [HttpPost]
@@ -73,9 +84,70 @@ namespace DesireDelivery.Controllers
             fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
             foods.ImageFile.SaveAs(fileName);
 
-            ViewBag.Message = foodsViewManager.Save(foods);
-            ViewBag.Restaurants = foodsViewManager.GetAllRestaurants();
+            ViewBag.Message = foodsManager.Save(foods);
+            ViewBag.Restaurants = foodsManager.GetAllRestaurants();
             return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //-------------------------------------User-------------------------------------------------------------
+        [Authorize]
+        [HttpGet]
+        public ActionResult RegisterUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegisterUser(RegisterUser user)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(user.ImageFile.FileName);
+            string extension = Path.GetExtension(user.ImageFile.FileName);
+            fileName = fileName + DateTime.Today.ToString("yymmddssfff") + extension;
+            user.ImagePath = "~/Image/User" + fileName;
+            fileName = Path.Combine(Server.MapPath("~/Image/User"), fileName);
+            user.ImageFile.SaveAs(fileName);
+
+            ViewBag.Message = registerUserManager.Save(user);
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult FoodsView()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetFoodBySearching(string stri)
+        {
+            List<Foods> foods = foodsViewManager.GetFoodBySearching(stri);
+            return Json(foods);
         }
     }
 }

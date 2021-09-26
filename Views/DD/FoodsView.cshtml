@@ -57,7 +57,7 @@
                 $("#tablebody").empty();
                 $.ajax({
                     type: "Post",
-                    url: '@Url.Action("GetFoodBySearching", "DDUser")',
+                    url: '@Url.Action("GetFoodBySearching", "DD")',
                     contentType: 'application/json',
                     data: JSON.stringify(json),
                     error: function (error) {
@@ -65,7 +65,7 @@
                     },
                     success: function (response) {
                         $.each(response, function(key, value) {
-                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.Restaurant + '</td><td><img src ="' + value.ImagePath + '"/></td></tr>');
+                            $("#tablebody").append('<tr><td>' + value.FoodName + '</td><td>' + value.Price + '</td><td>' + value.Restaurant + '</td><td><img src ="' + value.ImagePath + '" width="50px" height="50px"/></td></tr>');
                         });
                     }
                 });
