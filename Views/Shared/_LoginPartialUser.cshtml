@@ -8,7 +8,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="btn btnn" role="button" aria-disabled="true">
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "DDUser", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Foods", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
             <li class="btn btnn" role="button" aria-disabled="true"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>

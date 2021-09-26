@@ -171,11 +171,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DDController.cs" />
-    <Compile Include="Controllers\DDUserController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Gateway\CommonGateway.cs" />
+    <Compile Include="Gateway\LogGateway.cs" />
     <Compile Include="Gateway\Owner\FoodsGateway.cs" />
     <Compile Include="Gateway\Owner\RegisterOwnerGateway.cs" />
     <Compile Include="Gateway\Owner\RestaurantGateway.cs" />
@@ -183,6 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manager\LogManager.cs" />
     <Compile Include="Manager\Owner\FoodsManager.cs" />
     <Compile Include="Manager\Owner\RegisterOwnerManager.cs" />
     <Compile Include="Manager\Owner\RestaurantManager.cs" />
@@ -307,9 +307,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -330,14 +327,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\DD\Index.cshtml" />
-    <Content Include="Views\DD\RegisterOwner.cshtml" />
-    <Content Include="Views\DD\RegisterRestaurant.cshtml" />
+    <Content Include="Views\Foods\Index.cshtml" />
+    <Content Include="Views\Foods\RegisterOwner.cshtml" />
+    <Content Include="Views\Foods\RegisterRestaurant.cshtml" />
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
-    <Content Include="Views\DDUser\Index.cshtml" />
-    <Content Include="Views\DD\RegisterUser.cshtml" />
-    <Content Include="Views\DD\FoodsAdding.cshtml" />
-    <Content Include="Views\DD\FoodsView.cshtml" />
+    <Content Include="Views\Foods\RegisterUser.cshtml" />
+    <Content Include="Views\Foods\FoodsAdding.cshtml" />
+    <Content Include="Views\Foods\FoodsView.cshtml" />
     <Content Include="Views\Shared\_LoginPartialUser.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

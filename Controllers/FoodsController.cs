@@ -10,16 +10,15 @@ using System.Web.Mvc;
 
 namespace DesireDelivery.Controllers
 {
-    public class DDController : Controller
+    public class FoodsController : Controller
     {
-        // GET: DD
         private RegisterOwnerManager registerOwnerManager;
         private RestaurantManager restaurantManager;
         private FoodsManager foodsManager;
         private RegisterUserManager registerUserManager;
         private FoodsViewManager foodsViewManager;
 
-        public DDController()
+        public FoodsController()
         {
             registerOwnerManager = new RegisterOwnerManager();
             restaurantManager = new RestaurantManager();
@@ -32,7 +31,7 @@ namespace DesireDelivery.Controllers
 
 
         //-------------------------------------Owner -------------------------------------------------------------
-        [Authorize]
+        
         public ActionResult Index()
         {
             return View();
@@ -55,7 +54,7 @@ namespace DesireDelivery.Controllers
             ViewBag.Message = registerOwnerManager.Save(owner);
             return View();
         }
-
+        [HttpGet]
         public ActionResult RegisterRestaurant()
         {
             ViewBag.Owners = restaurantManager.GetAllOwner();
@@ -117,7 +116,7 @@ namespace DesireDelivery.Controllers
 
 
         //-------------------------------------User-------------------------------------------------------------
-        [Authorize]
+        
         [HttpGet]
         public ActionResult RegisterUser()
         {
@@ -136,7 +135,6 @@ namespace DesireDelivery.Controllers
             ViewBag.Message = registerUserManager.Save(user);
             return View();
         }
-
         [HttpGet]
         public ActionResult FoodsView()
         {
