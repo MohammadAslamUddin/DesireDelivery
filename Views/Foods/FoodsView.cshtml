@@ -6,7 +6,7 @@
     List<Foods> foods = ViewBag.Foods;
 }
 
-@using (Html.BeginForm("FoodsView", "DDUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("FoodsView", "Foods", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <fieldset>
         <div class="container rounded bg-white mt-5 mb-5">
@@ -57,7 +57,7 @@
                 $("#tablebody").empty();
                 $.ajax({
                     type: "Post",
-                    url: '@Url.Action("GetFoodBySearching", "DD")',
+                    url: '@Url.Action("GetFoodBySearching", "Foods")',
                     contentType: 'application/json',
                     data: JSON.stringify(json),
                     error: function (error) {
