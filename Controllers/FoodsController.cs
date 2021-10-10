@@ -31,7 +31,7 @@ namespace DesireDelivery.Controllers
 
 
         //-------------------------------------Owner -------------------------------------------------------------
-        
+
         public ActionResult Index()
         {
             return View();
@@ -116,7 +116,7 @@ namespace DesireDelivery.Controllers
 
 
         //-------------------------------------User-------------------------------------------------------------
-        
+
         [HttpGet]
         public ActionResult RegisterUser()
         {
@@ -138,6 +138,7 @@ namespace DesireDelivery.Controllers
         [HttpGet]
         public ActionResult FoodsView()
         {
+            ViewBag.Foods = foodsViewManager.GetFoodBySearching("");
             return View();
         }
 
