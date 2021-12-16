@@ -6,7 +6,7 @@
     string message = ViewBag.Message;
 }
 
-@using (Html.BeginForm("RegisterUser","DDUser",FormMethod.Post, new {enctype= "multipart/form-data" }))
+@using (Html.BeginForm("RegisterUser","Foods",FormMethod.Post, new {enctype= "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 <fieldset><div class="container rounded bg-white mt-5 mb-5">
